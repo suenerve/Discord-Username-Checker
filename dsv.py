@@ -11,12 +11,13 @@ import string
 import requests
 import os
 import time
+import json
 from colorama import Fore,Back,init
 import sys
 init(autoreset=True)
 __version__ = "Author: suegdu DSV 1.0"
 __github__= "https://github.com/suegdu"
-URL = "https://discord.com/api/v9/users/@me/pomelo-attempt"
+URL = "https://discord.com/api/v9/users/@me"
 HEADERS = {
     "Content-Type": "Application/json",
     "Orgin": "https://discord.com/",
@@ -66,40 +67,42 @@ def validate_names(opt,usernames:str):
        body = {
            "username": username
        }
-       response = requests.post(URL, headers=HEADERS, json=body)
+       response = requests.patch(URL, headers=HEADERS, data=json.dumps(body))
        if response.status_code == 429:
            sleep_time = response.json()["retry_after"]
            print(f"{Lb}[!]{Fore.RED} Rate limit hit. Sleeping for {sleep_time}s")
            time.sleep(sleep_time)
-           response = requests.post(URL, headers=HEADERS, json=body)
-       if response.json()['code'] == 40001:
-           print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{username}' available.")
-           available_usernames.append(username)
-       elif response.json()['code'] == 50035:
+       if 'errors' in response.json() :
+        if 'username' in response.json()['errors']:
            print(f"{Lb}[!]{Fore.RED} '{username}' taken.")
+        else :
+           print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{username}' available.")
        else:
            print(f"{Lb}[!]{Fore.RED} Error validating '{username}': {response.json()['message']}")
            input(f"{Fore.YELLOW}Press Enter to exit.")
            sys.exit(0)
    elif opt == 1:
+
        body = {
            "username": usernames
        }
-       response = requests.post(URL, headers=HEADERS, json=body)
+       response = requests.patch(URL, headers=HEADERS, data=json.dumps(body))
        if response.status_code == 429:
            sleep_time = response.json()["retry_after"]
            print(f"{Lb}[!]{Fore.RED} Rate limit hit. Sleeping for {sleep_time}s")
            time.sleep(sleep_time)
-           response = requests.post(URL, headers=HEADERS, json=body)
-       if response.json()['code'] == 40001:
-           print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{usernames}' available.")
            available_usernames.append(usernames)
-       elif response.json()['code'] == 50035:
+       if 'errors' in response.json() :
+        if 'username' in response.json()['errors']:
            print(f"{Lb}[!]{Fore.RED} '{usernames}' taken.")
+        else :
+           print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{usernames}' available.")
        else:
            print(f"{Lb}[!]{Fore.RED} Error validating '{usernames}': {response.json()['message']}")
            input(f"{Fore.YELLOW}Press Enter to exit.")
            sys.exit(0)
+ 
+       
 def opt2load():
     global av_list
     global dir_path
