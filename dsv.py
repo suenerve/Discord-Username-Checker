@@ -64,6 +64,7 @@ def validate_names(opt,usernames:str):
    global available_usernames
    if opt == 2:
     for username in usernames:
+       time.sleep(1)
        body = {
            "username": username
        }
@@ -140,7 +141,7 @@ def opt1func(v1,v2):
    for i in range(v1):
     name = get_names(int(v2))
     validate_names(1,name)
-    time.sleep(0.9)
+    time.sleep(1)
    save()
    print(f"\n{Lb}[!]{Fore.LIGHTGREEN_EX} Done. {Ly}{len(available_usernames)}{Fore.LIGHTGREEN_EX} Available usernames, are saved in the following file: '{av_list}' .")
    input(f"{Fore.YELLOW}Press Enter to exit.")
