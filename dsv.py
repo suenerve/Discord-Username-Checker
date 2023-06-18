@@ -17,6 +17,9 @@ import sys
 init(autoreset=True)
 __version__ = "Author: suegdu DSV 1.0"
 __github__= "https://github.com/suegdu"
+
+Delay:int = 1 # Seconds
+
 URL = "https://discord.com/api/v9/users/@me"
 HEADERS = {
     "Content-Type": "Application/json",
@@ -64,7 +67,7 @@ def validate_names(opt,usernames:str):
    global available_usernames
    if opt == 2:
     for username in usernames:
-       time.sleep(1)
+       time.sleep(Delay)
        body = {
            "username": username
        }
@@ -141,7 +144,7 @@ def opt1func(v1,v2):
    for i in range(v1):
     name = get_names(int(v2))
     validate_names(1,name)
-    time.sleep(1)
+    time.sleep(Delay)
    save()
    print(f"\n{Lb}[!]{Fore.LIGHTGREEN_EX} Done. {Ly}{len(available_usernames)}{Fore.LIGHTGREEN_EX} Available usernames, are saved in the following file: '{av_list}' .")
    input(f"{Fore.YELLOW}Press Enter to exit.")
