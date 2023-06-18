@@ -52,14 +52,25 @@ def main():
 """)
     proc0()
     
+def setdelay():
+   global Delay
+   d_input = input(f"{Lb}[{Ly}Delay (Seconds | Default is 1, the longer the safer avoiding suspension.){Lb}]:> ")
+   try:
+      int(d_input)
+      Delay = int(d_input)
+   except ValueError:
+      print(f"{Lb}[!]{Fore.RED}Error: You must enter a valid integer. No strings.")
+      setdelay()
 
 def proc0():
     m_input = input(f"{Fore.LIGHTBLACK_EX}[{Fore.LIGHTGREEN_EX}DSV{Fore.LIGHTBLACK_EX}]:> {Fore.LIGHTYELLOW_EX}").lower()
     if m_input=="":
         proc0()
     elif m_input=="2":
+        setdelay()
         opt2load()
     elif m_input=="1":
+       setdelay()
        opt1load()
     else:
         proc0()
@@ -82,6 +93,7 @@ def validate_names(opt,usernames:str):
         else :
            print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{username}' available.")
        else:
+           print(Delay)
            print(f"{Lb}[!]{Fore.RED} Error validating '{username}': {response.json()['message']}")
            input(f"{Fore.YELLOW}Press Enter to exit.")
            sys.exit(0)
