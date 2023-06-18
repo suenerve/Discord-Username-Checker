@@ -92,6 +92,7 @@ def validate_names(opt,usernames:str):
            print(f"{Lb}[!]{Fore.RED} '{username}' taken.")
         else :
            print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{username}' available.")
+           available_usernames.append(usernames)
        else:
            print(Delay)
            print(f"{Lb}[!]{Fore.RED} Error validating '{username}': {response.json()['message']}")
@@ -107,12 +108,12 @@ def validate_names(opt,usernames:str):
            sleep_time = response.json()["retry_after"]
            print(f"{Lb}[!]{Fore.RED} Rate limit hit. Sleeping for {sleep_time}s")
            time.sleep(sleep_time)
-           available_usernames.append(usernames)
        if 'errors' in response.json() :
         if 'username' in response.json()['errors']:
            print(f"{Lb}[!]{Fore.RED} '{usernames}' taken.")
         else :
            print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{usernames}' available.")
+           available_usernames.append(usernames)
        else:
            print(f"{Lb}[!]{Fore.RED} Error validating '{usernames}': {response.json()['message']}")
            input(f"{Fore.YELLOW}Press Enter to exit.")
