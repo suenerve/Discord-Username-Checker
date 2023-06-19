@@ -34,16 +34,21 @@ Lb = Fore.LIGHTBLACK_EX
 Ly = Fore.LIGHTYELLOW_EX
 def main():
     os.system(f"title {__version__}")
+    if TOKEN == "PASTE YOUR TOKEN HERE":
+        print(f"{Lb}[!]{Fore.RED} You must paste your token in the TOKEN variable.")
+        input(f"{Fore.YELLOW}Press Enter to exit.")
+        sys.exit(0)
+        
     print(f"""{Fore.LIGHTYELLOW_EX}
 ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
   {__version__} 
   {__github__}
 
   ██████╗ ███████╗██╗   ██╗                     
-  ██╔══██╗██╔════╝██║   ██║                     
+  ██╔══██╗██╔════╝██║   ██║                     {Fore.LIGHTCYAN_EX}Connnected as {requests.get(URL,headers=HEADERS).json()['username']}{Fore.LIGHTYELLOW_EX}#{Fore.LIGHTCYAN_EX}{requests.get(URL,headers=HEADERS).json()['discriminator']}{Fore.LIGHTYELLOW_EX}
   ██║  ██║███████╗██║   ██║                     
-  ██║  ██║╚════██║╚██╗ ██╔╝                     {Fore.LIGHTCYAN_EX}1-{Fore.LIGHTBLACK_EX}[{Fore.YELLOW}Generate names and check{Fore.LIGHTBLACK_EX}]{Fore.LIGHTYELLOW_EX}
-  ██████╔╝███████║ ╚████╔╝ 
+  ██║  ██║╚════██║╚██╗ ██╔╝                     
+  ██████╔╝███████║ ╚████╔╝                      {Fore.LIGHTCYAN_EX}1-{Fore.LIGHTBLACK_EX}[{Fore.YELLOW}Generate names and check{Fore.LIGHTBLACK_EX}]{Fore.LIGHTYELLOW_EX}
   ╚═════╝ ╚══════╝  ╚═══╝                       {Fore.LIGHTCYAN_EX}2-{Fore.LIGHTBLACK_EX}[{Fore.YELLOW}Check a specific list{Fore.LIGHTBLACK_EX}]{Fore.LIGHTYELLOW_EX}
 
                  
@@ -64,6 +69,8 @@ def setdelay():
 
 def proc0():
     m_input = input(f"{Fore.LIGHTBLACK_EX}[{Fore.LIGHTGREEN_EX}DSV{Fore.LIGHTBLACK_EX}]:> {Fore.LIGHTYELLOW_EX}").lower()
+    if m_input=="exit":
+        sys.exit(0)
     if m_input=="":
         proc0()
     elif m_input=="2":
@@ -167,4 +174,4 @@ def get_names(length: int) ->str:
    return ''.join(random.sample(string.ascii_letters, length))
     
 if __name__ == "__main__":
- main()
+    main()
