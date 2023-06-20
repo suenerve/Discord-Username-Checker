@@ -171,7 +171,7 @@ def opt1func(v1,v2):
    sys.exit(0)
 
 def get_names(length: int) ->str:
-   return ''.join(random.sample(string.ascii_letters, length))
+   return ''.join(random.sample(string.ascii_letters + string.digits, length))
     
 if __name__ == "__main__":
     main()
