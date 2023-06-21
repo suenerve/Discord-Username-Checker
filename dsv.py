@@ -1,6 +1,6 @@
-# This is a very early build you may face some bugs, unknown bugs. But with your informing help, we can make it better.
+# This is a build that you may face some bugs with, unknown bugs. It may not work for you and work for others.
 # Open issues at: https://github.com/suegdu/DSV/issues/new
-# NOTE : Spamming Discord's API is against TOS, You may get your account suspended and I am not responsible. For a further caution, Use an alt's token.
+# NOTE : Spamming Discord's API is against TOS, You may get your account suspended and I am not responsible. For a further caution, use an alt's token and a higher delay.
 
 
 TOKEN = "PASTE YOUR TOKEN HERE"
@@ -36,8 +36,7 @@ def main():
     os.system(f"title {__version__}")
     if TOKEN == "PASTE YOUR TOKEN HERE":
         print(f"{Lb}[!]{Fore.RED} You must paste your token in the TOKEN variable.")
-        input(f"{Fore.YELLOW}Press Enter to exit.")
-        sys.exit(0)
+        exit()
         
     print(f"""{Fore.LIGHTYELLOW_EX}
 ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
@@ -81,14 +80,14 @@ def proc0():
        opt1load()
     else:
         proc0()
-def validate_names(opt,usernames:str):
+def validate_names(opt,usernames):
    global available_usernames
    if opt == 2:
     for username in usernames:
-       time.sleep(Delay)
        body = {
            "username": username
        }
+       time.sleep(Delay)
        response = requests.patch(URL, headers=HEADERS, data=json.dumps(body))
        if response.status_code == 429:
            sleep_time = response.json()["retry_after"]
@@ -99,14 +98,12 @@ def validate_names(opt,usernames:str):
            print(f"{Lb}[!]{Fore.RED} '{username}' taken.")
         else :
            print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{username}' available.")
-           available_usernames.append(usernames)
+           available_usernames.append(username)
        else:
            print(Delay)
            print(f"{Lb}[!]{Fore.RED} Error validating '{username}': {response.json()['message']}")
-           input(f"{Fore.YELLOW}Press Enter to exit.")
-           sys.exit(0)
+           exit()
    elif opt == 1:
-
        body = {
            "username": usernames
        }
@@ -123,10 +120,16 @@ def validate_names(opt,usernames:str):
            available_usernames.append(usernames)
        else:
            print(f"{Lb}[!]{Fore.RED} Error validating '{usernames}': {response.json()['message']}")
-           input(f"{Fore.YELLOW}Press Enter to exit.")
-           sys.exit(0)
- 
-       
+           exit()
+def exit():
+   input(f"{Fore.YELLOW}Press Enter to exit.")
+   sys.exit(0)
+def checkavail():
+   if len(available_usernames) < 1:
+      print(f"{Lb}[!]{Fore.RED}Error: No available usernames found.")
+      exit()
+   else:
+      return
 def opt2load():
     global av_list
     global dir_path
@@ -136,15 +139,13 @@ def opt2load():
      with open(list_path) as file:
       usernames = [line.strip() for line in file]
       validate_names(2,usernames)
-     with open(av_list, "w") as file:
-        save()
-        print(f"\n{Lb}[!]{Fore.LIGHTGREEN_EX} Done. {Ly}{len(available_usernames)}{Fore.LIGHTGREEN_EX} Available usernames, are saved in the following file: '{av_list}' .")
-        input(f"{Fore.YELLOW}Press Enter to exit.")
-        sys.exit(0)
+     checkavail()
+     save()
+     print(f"\n{Lb}[!]{Fore.LIGHTGREEN_EX} Done. {Ly}{len(available_usernames)}{Fore.LIGHTGREEN_EX} Available usernames, are saved in the following file: '{av_list}' .")
+     exit()
     except FileNotFoundError:
        print(f"{Lb}[!]{Fore.RED}Error: Couldn't find the list (usernames.txt). Please make sure to create a valid list file in the same directory: \n({dir_path}\\)")
-       input(f"{Fore.YELLOW}Press Enter to exit.")
-       sys.exit(0)
+       exit()
 def opt1load():
    opt1_input:int = input(f"{Lb}[{Ly}How many letters in a username{Lb}]:> ")
    try:
@@ -165,10 +166,10 @@ def opt1func(v1,v2):
     name = get_names(int(v2))
     validate_names(1,name)
     time.sleep(Delay)
+   checkavail()
    save()
    print(f"\n{Lb}[!]{Fore.LIGHTGREEN_EX} Done. {Ly}{len(available_usernames)}{Fore.LIGHTGREEN_EX} Available usernames, are saved in the following file: '{av_list}' .")
-   input(f"{Fore.YELLOW}Press Enter to exit.")
-   sys.exit(0)
+   exit()
 
 def get_names(length: int) ->str:
    return ''.join(random.sample(string.ascii_letters + string.digits, length))
