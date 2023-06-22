@@ -30,6 +30,7 @@ HEADERS = {
 available_usernames = []
 dir_path = os.path.dirname(os.path.realpath(__file__))
 av_list = os.path.join(dir_path, f"available_usernames.txt")
+sample_0 = r"_."
 Lb = Fore.LIGHTBLACK_EX
 Ly = Fore.LIGHTYELLOW_EX
 def main():
@@ -172,7 +173,7 @@ def opt1func(v1,v2):
    exit()
 
 def get_names(length: int) ->str:
-   return ''.join(random.sample(string.ascii_letters + string.digits, length))
+   return ''.join(random.sample(string.ascii_letters + string.digits + sample_0, length))
     
 if __name__ == "__main__":
     main()
