@@ -1,4 +1,3 @@
-# This is a build that you may face some bugs with, unknown bugs. It may not work for you and work for others.
 # Open issues at: https://github.com/suegdu/DSV/issues/new
 # NOTE : Spamming Discord's API is against TOS, You may get your account suspended and I am not responsible. For a further caution, use an alt's token and a higher delay.
 
