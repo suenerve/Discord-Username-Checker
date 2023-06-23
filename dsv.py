@@ -76,12 +76,12 @@ def main():
     if configur.get("sys","TOKEN") == "":
         print(f"{Lb}[!]{Fore.RED} No token found. You must paste your token inside the 'config.ini' file, in front of the value 'TOKEN'.")
         exit()
-    os.system(f"title {__version__} - Connnected as {requests.get(URL,headers=HEADERS).json()['username']}")
+    os.system(f"title {__version__} - Connected as {requests.get(URL,headers=HEADERS).json()['username']}")
     setconf()    
     print(f"""{Fore.LIGHTYELLOW_EX}
 ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
   {__version__} 
-  {__github__}                     {Fore.LIGHTCYAN_EX}Connnected as {requests.get(URL,headers=HEADERS).json()['username']}{Ly}#{Fore.LIGHTCYAN_EX}{requests.get(URL,headers=HEADERS).json()['discriminator']}{Ly}
+  {__github__}                     {Fore.LIGHTCYAN_EX}Connected as {requests.get(URL,headers=HEADERS).json()['username']}{Ly}#{Fore.LIGHTCYAN_EX}{requests.get(URL,headers=HEADERS).json()['discriminator']}{Ly}
                             
   ██████╗ ███████╗██╗   ██╗                     {Fore.LIGHTCYAN_EX}1-{Fore.LIGHTBLACK_EX}[{Fore.YELLOW}Generate names and check{Fore.LIGHTBLACK_EX}]{Ly}             
   ██╔══██╗██╔════╝██║   ██║                     {Fore.LIGHTCYAN_EX}2-{Fore.LIGHTBLACK_EX}[{Fore.YELLOW}Check a specific list{Fore.LIGHTBLACK_EX}]{Ly}             
