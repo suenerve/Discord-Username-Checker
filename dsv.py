@@ -3,7 +3,6 @@
 # NOTE : Spamming Discord's API is against TOS, You may get your account suspended and I am not responsible. For a further caution, use an alt's token and a higher delay.
 
 
-TOKEN = "PASTE YOUR TOKEN HERE"
 
 
 import random
@@ -13,45 +12,86 @@ import os
 import time
 import json
 from colorama import Fore,Back,init
+from configparser import ConfigParser
 import sys
 init(autoreset=True)
-__version__ = "Author: suegdu DSV 1.0"
+__version__ = "Author: suegdu DSV 1.7"
 __github__= "https://github.com/suegdu"
+dir_path = os.path.dirname(os.path.realpath(__file__))
+configur = ConfigParser()
+configur.read(os.path.join(dir_path, f"config.ini"))
 
-Delay:int = 1 # Seconds
 
 URL = "https://discord.com/api/v9/users/@me"
 HEADERS = {
     "Content-Type": "Application/json",
     "Orgin": "https://discord.com/",
 
-    "Authorization":TOKEN
+    "Authorization":configur.get("sys","TOKEN")
 }
 available_usernames = []
-dir_path = os.path.dirname(os.path.realpath(__file__))
 av_list = os.path.join(dir_path, f"available_usernames.txt")
 sample_0 = r"_."
 Lb = Fore.LIGHTBLACK_EX
 Ly = Fore.LIGHTYELLOW_EX
+Delay = configur.getfloat("other","default_delay")
+def setconf():
+   global string_0
+   global digits_0
+   global punctuation_0
+   global sat_string
+   global sat_digits
+   global sat_punct
+   sat_string = configur.getboolean("config","string")
+   sat_digits = configur.getboolean("config","digits")
+   sat_punct = configur.getboolean("config","punctuation")
+   if sat_string == True:
+      string_0 = string.ascii_lowercase
+   elif sat_string == False:
+      string_0 = ""
+   else:
+      string_0 = string.ascii_lowercase
+      sat_string = True
+   if sat_digits == True:
+      digits_0 = string.digits
+   elif sat_digits == False:
+      digits_0 = ""
+   else:
+      digits_0 = string.digits
+      sat_digits = True
+   if sat_punct == True:
+      punctuation_0 = sample_0
+   elif sat_punct == False:
+      punctuation_0 = ""
+   else:
+      punctuation_0 = sample_0
+      sat_punct = True
+   if sat_punct == False and sat_digits == False and sat_string == False:
+      punctuation_0 = sample_0
+      digits_0 = string.digits
+      string_0 = string.ascii_lowercase
+
 def main():
-    os.system(f"title {__version__}")
-    if TOKEN == "PASTE YOUR TOKEN HERE":
-        print(f"{Lb}[!]{Fore.RED} You must paste your token in the TOKEN variable.")
+    os.system(f"title {__version__} - Connnected as {requests.get(URL,headers=HEADERS).json()['username']}")
+    setconf()
+    if configur.get("sys","TOKEN") == "":
+        print(f"{Lb}[!]{Fore.RED} No token found. You must paste your token inside the 'config.ini' file, in front of the value 'TOKEN'.")
         exit()
         
     print(f"""{Fore.LIGHTYELLOW_EX}
 ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
   {__version__} 
-  {__github__}
-
-  ██████╗ ███████╗██╗   ██╗                     
-  ██╔══██╗██╔════╝██║   ██║                     {Fore.LIGHTCYAN_EX}Connnected as {requests.get(URL,headers=HEADERS).json()['username']}{Fore.LIGHTYELLOW_EX}#{Fore.LIGHTCYAN_EX}{requests.get(URL,headers=HEADERS).json()['discriminator']}{Fore.LIGHTYELLOW_EX}
+  {__github__}                     {Fore.LIGHTCYAN_EX}Connnected as {requests.get(URL,headers=HEADERS).json()['username']}{Ly}#{Fore.LIGHTCYAN_EX}{requests.get(URL,headers=HEADERS).json()['discriminator']}{Ly}
+                            
+  ██████╗ ███████╗██╗   ██╗                     {Fore.LIGHTCYAN_EX}1-{Fore.LIGHTBLACK_EX}[{Fore.YELLOW}Generate names and check{Fore.LIGHTBLACK_EX}]{Ly}             
+  ██╔══██╗██╔════╝██║   ██║                     {Fore.LIGHTCYAN_EX}2-{Fore.LIGHTBLACK_EX}[{Fore.YELLOW}Check a specific list{Fore.LIGHTBLACK_EX}]{Ly}             
   ██║  ██║███████╗██║   ██║                     
-  ██║  ██║╚════██║╚██╗ ██╔╝                     
-  ██████╔╝███████║ ╚████╔╝                      {Fore.LIGHTCYAN_EX}1-{Fore.LIGHTBLACK_EX}[{Fore.YELLOW}Generate names and check{Fore.LIGHTBLACK_EX}]{Fore.LIGHTYELLOW_EX}
-  ╚═════╝ ╚══════╝  ╚═══╝                       {Fore.LIGHTCYAN_EX}2-{Fore.LIGHTBLACK_EX}[{Fore.YELLOW}Check a specific list{Fore.LIGHTBLACK_EX}]{Fore.LIGHTYELLOW_EX}
-
-                 
+  ██║  ██║╚════██║╚██╗ ██╔╝                     Config.ini:
+  ██████╔╝███████║ ╚████╔╝                        {Fore.LIGHTCYAN_EX}Digits: {Fore.YELLOW}{sat_digits}{Ly}
+  ╚═════╝ ╚══════╝  ╚═══╝                         {Fore.LIGHTCYAN_EX}String: {Fore.YELLOW}{sat_string}{Ly}
+                                                  {Fore.LIGHTCYAN_EX}Punctuation: {Fore.YELLOW}{sat_punct}{Ly}
+                                                  {Fore.LIGHTCYAN_EX}Delay: {Fore.YELLOW}{Delay}{Ly}
+                                                  
   Discord Username's availability validator.
 ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 """)
@@ -59,11 +99,15 @@ def main():
     
 def setdelay():
    global Delay
-   d_input = input(f"{Lb}[{Ly}Delay (Seconds | Default is 1, the longer the safer avoiding suspension.){Lb}]:> ")
-   try:
+   print(f"{Lb}[!]{Ly} Default delay is: {Delay}s (config.ini){Lb}")
+   d_input = input(f"{Lb}[{Ly}Edit Delay (Press Enter to skip){Lb}]:> ")
+   if d_input=="" or d_input.isspace():
+      return
+   else:   
+    try:
       int(d_input)
       Delay = int(d_input)
-   except ValueError:
+    except ValueError:
       print(f"{Lb}[!]{Fore.RED}Error: You must enter a valid integer. No strings.")
       setdelay()
 
@@ -173,7 +217,7 @@ def opt1func(v1,v2):
    exit()
 
 def get_names(length: int) ->str:
-   return ''.join(random.sample(string.ascii_letters + string.digits + sample_0, length))
+   return ''.join(random.sample(string_0 + digits_0 + punctuation_0, length))
     
 if __name__ == "__main__":
     main()
