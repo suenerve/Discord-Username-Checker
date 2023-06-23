@@ -19,7 +19,7 @@ Discord Username's availability checker.
 - Configure DSV as how you'd like (`config.ini`)
 - Run `dsv.py` 
 
-- (For adding specific list of usernames, create a file named `usernames.txt` in the same running directory as `dsv.py` and list your usernames there, separating them by a new line.)
+- (For adding a specific list of usernames, create a file named `usernames.txt` in the same running directory as `dsv.py` and list your usernames there, separating them by a new line.)
 
 # Images
 ![](./images/img1.png)
