@@ -35,7 +35,7 @@ av_list = os.path.join(dir_path, f"available_usernames.txt")
 sample_0 = r"_."
 Lb = Fore.LIGHTBLACK_EX
 Ly = Fore.LIGHTYELLOW_EX
-Delay = configur.getfloat("other","default_delay")
+Delay = configur.getfloat("sys","default_delay")
 def setconf():
    global string_0
    global digits_0
