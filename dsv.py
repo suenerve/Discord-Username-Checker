@@ -72,12 +72,11 @@ def setconf():
       string_0 = string.ascii_lowercase
 
 def main():
-    os.system(f"title {__version__} - Connnected as {requests.get(URL,headers=HEADERS).json()['username']}")
-    setconf()
     if configur.get("sys","TOKEN") == "":
         print(f"{Lb}[!]{Fore.RED} No token found. You must paste your token inside the 'config.ini' file, in front of the value 'TOKEN'.")
         exit()
-        
+    os.system(f"title {__version__} - Connnected as {requests.get(URL,headers=HEADERS).json()['username']}")
+    setconf()    
     print(f"""{Fore.LIGHTYELLOW_EX}
 ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
   {__version__} 
