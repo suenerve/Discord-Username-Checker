@@ -1,8 +1,8 @@
 # DSV
 Discord Username's availability checker.
 
-
-
+# Due to recent changes in Discord's API, the tool is no longer functional. Discord's rate limiting and added CAPTCHA requirements have made it impossible to continue.
+# Will fetch for updates in the meantime and get it updated once it's possible to get it working.
 - Checks for a specific list of usernames.
 - Generates and checks for a specific given amount of usernames with a specific username length, (e.g 4 letters usernames.)
 - Completely customizable.
