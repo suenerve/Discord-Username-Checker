@@ -1,7 +1,7 @@
 # DSV
 Discord Username's availability checker.
 
-## Due to recent changes in Discord's API, the tool is no longer functional. Discord's rate limiting and added CAPTCHA requirements have made it impossible to continue.
+## Due to recent changes in Discord's API, the tool is no longer functional. Discord's rate limiting and added CAPTCHA requirements have made it impossible to continue.(It will only work with an account that didn't proceed to apply the name change and has the pop up to update.)
 ### Will fetch for updates in the meantime and get it updated once it's possible to get it working. For contribution and updates: https://discord.gg/Bww4DvKA4Z
 
 - Checks for a specific list of usernames.
@@ -31,8 +31,8 @@ Discord Username's availability checker.
 
 - Spamming Discord's API is against TOS, You may get your account suspended and I am not responsible. For a further caution, use an alt's token and a longer delay.
 - You need to get your Discord's account's authorization token and paste it inside the variable: `TOKEN` . On how to do that check these following steps: https://www.androidauthority.com/get-discord-token-3149920/
-- Your account must receive the <a href="https://discord.com/blog/usernames">name change update</a> to use this tool or else you may face some bugs or an invalid continuation of an `Available` username.
-- If you kept getting an `Available` username message despite it being taken, that means you have either reached the limit (***API***) or your account didn't receive the update.
+(old)- Your account must receive the <a href="https://discord.com/blog/usernames">name change update</a> to use this tool or else you may face some bugs or an invalid continuation of an `Available` username.
+(old)- If you kept getting an `Available` username message despite it being taken, that means you have either reached the limit (***API***) or your account didn't receive the update.
 - Make sure to have a decent delay or you may get your account disabled. 
 <!-- - > #### This is a very early and LIMITED build you may face some bugs, unknown bugs. It may not work for you and work for some. But with your informing help, we can make it better. <a href="https://github.com/suegdu/DSV/issues/new">Open an issue here</a>. -->
 - I **demand** my credits to the code wherever it's used.
