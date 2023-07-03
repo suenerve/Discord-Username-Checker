@@ -146,7 +146,6 @@ def validate_names(opt,usernames):
            elif json_endpoint["taken"] is True:
               print(f"{Lb}[!]{Fore.RED} '{username}' taken.")
        else:
-           print(Delay)
            print(f"{Lb}[!]{Fore.RED} Error validating '{username}': {endpoint.json()['message']}")
            exit()
    elif opt == 1:
