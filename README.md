@@ -1,6 +1,6 @@
 # DSV
 Discord Username's availability checker.
-### Note: It will only work with accounts that didn't proceed to apply the name change and has the pop up to update. Read <a href =#notes >Notes</a> to know why.
+### Note: It will only work with accounts that didn't proceed to apply the name change and has the pop up to update(Eg: Create an alt.). Read <a href =#notes >Notes</a> to know why.
 #### For contribution and updates: <a href="https://discord.gg/Bww4DvKA4Z">Join the Discord</a>
 ---
 - Checks for a specific list of usernames.
