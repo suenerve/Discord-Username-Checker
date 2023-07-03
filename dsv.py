@@ -16,14 +16,14 @@ from colorama import Fore,Back,init
 from configparser import ConfigParser
 import sys
 init(autoreset=True)
-__version__ = "Author: suegdu DSV 1.7"
+__version__ = "Author: suegdu DSV 1.8"
 __github__= "https://github.com/suegdu"
 dir_path = os.path.dirname(os.path.realpath(__file__))
 configur = ConfigParser()
 configur.read(os.path.join(dir_path, f"config.ini"))
 
-
-URL = "https://discord.com/api/v9/users/@me"
+sys_url = "https://discord.com/api/v9/users/@me"
+URL = "https://discord.com/api/v9/users/@me/pomelo-attempt"
 HEADERS = {
     "Content-Type": "Application/json",
     "Orgin": "https://discord.com/",
@@ -35,7 +35,7 @@ av_list = os.path.join(dir_path, f"available_usernames.txt")
 sample_0 = r"_."
 Lb = Fore.LIGHTBLACK_EX
 Ly = Fore.LIGHTYELLOW_EX
-Delay = configur.getfloat("sys","default_delay")
+Delay = configur.getfloat("other","default_delay")
 def setconf():
    global string_0
    global digits_0
@@ -76,12 +76,12 @@ def main():
     if configur.get("sys","TOKEN") == "":
         print(f"{Lb}[!]{Fore.RED} No token found. You must paste your token inside the 'config.ini' file, in front of the value 'TOKEN'.")
         exit()
-    os.system(f"title {__version__} - Connected as {requests.get(URL,headers=HEADERS).json()['username']}")
+    os.system(f"title {__version__} - Connected as {requests.get(sys_url,headers=HEADERS).json()['username']}")
     setconf()    
     print(f"""{Fore.LIGHTYELLOW_EX}
 ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
   {__version__} 
-  {__github__}                     {Fore.LIGHTCYAN_EX}Connected as {requests.get(URL,headers=HEADERS).json()['username']}{Ly}#{Fore.LIGHTCYAN_EX}{requests.get(URL,headers=HEADERS).json()['discriminator']}{Ly}
+  {__github__}                     {Fore.LIGHTCYAN_EX}Connected as {requests.get(sys_url,headers=HEADERS).json()['username']}{Ly}#{Fore.LIGHTCYAN_EX}{requests.get(sys_url,headers=HEADERS).json()['discriminator']}{Ly}
                             
   ██████╗ ███████╗██╗   ██╗                     {Fore.LIGHTCYAN_EX}1-{Fore.LIGHTBLACK_EX}[{Fore.YELLOW}Generate names and check{Fore.LIGHTBLACK_EX}]{Ly}             
   ██╔══██╗██╔════╝██║   ██║                     {Fore.LIGHTCYAN_EX}2-{Fore.LIGHTBLACK_EX}[{Fore.YELLOW}Check a specific list{Fore.LIGHTBLACK_EX}]{Ly}             
@@ -133,38 +133,40 @@ def validate_names(opt,usernames):
            "username": username
        }
        time.sleep(Delay)
-       response = requests.patch(URL, headers=HEADERS, data=json.dumps(body))
-       if response.status_code == 429:
-           sleep_time = response.json()["retry_after"]
+       endpoint = requests.post(URL, headers=HEADERS, json=body)
+       json_endpoint = endpoint.json()
+       if endpoint.status_code == 429:
+           sleep_time = endpoint.json()["retry_after"]
            print(f"{Lb}[!]{Fore.RED} Rate limit hit. Sleeping for {sleep_time}s")
            time.sleep(sleep_time)
-       if 'errors' in response.json() :
-        if 'username' in response.json()['errors']:
-           print(f"{Lb}[!]{Fore.RED} '{username}' taken.")
-        else :
-           print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{username}' available.")
-           available_usernames.append(username)
+       if json_endpoint.get("taken") is not None:
+           if json_endpoint["taken"] is False:
+            print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{username}' available.")
+            available_usernames.append(username)
+           elif json_endpoint["taken"] is True:
+              print(f"{Lb}[!]{Fore.RED} '{username}' taken.")
        else:
            print(Delay)
-           print(f"{Lb}[!]{Fore.RED} Error validating '{username}': {response.json()['message']}")
+           print(f"{Lb}[!]{Fore.RED} Error validating '{username}': {endpoint.json()['message']}")
            exit()
    elif opt == 1:
        body = {
            "username": usernames
        }
-       response = requests.patch(URL, headers=HEADERS, data=json.dumps(body))
-       if response.status_code == 429:
-           sleep_time = response.json()["retry_after"]
+       endpoint = requests.post(URL, headers=HEADERS, json=body)
+       json_endpoint = endpoint.json()
+       if endpoint.status_code == 429:
+           sleep_time = endpoint.json()["retry_after"]
            print(f"{Lb}[!]{Fore.RED} Rate limit hit. Sleeping for {sleep_time}s")
            time.sleep(sleep_time)
-       if 'errors' in response.json() :
-        if 'username' in response.json()['errors']:
-           print(f"{Lb}[!]{Fore.RED} '{usernames}' taken.")
-        else :
-           print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{usernames}' available.")
-           available_usernames.append(usernames)
+       if json_endpoint.get("taken") is not None:
+           if json_endpoint["taken"] is False:
+            print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{username}' available.")
+            available_usernames.append(username)
+           elif json_endpoint["taken"] is True:
+              print(f"{Lb}[!]{Fore.RED} '{username}' taken.")
        else:
-           print(f"{Lb}[!]{Fore.RED} Error validating '{usernames}': {response.json()['message']}")
+           print(f"{Lb}[!]{Fore.RED} Error validating '{usernames}': {endpoint.json()['message']}")
            exit()
 def exit():
    input(f"{Fore.YELLOW}Press Enter to exit.")
