@@ -160,10 +160,10 @@ def validate_names(opt,usernames):
            time.sleep(sleep_time)
        if json_endpoint.get("taken") is not None:
            if json_endpoint["taken"] is False:
-            print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{username}' available.")
-            available_usernames.append(username)
+            print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{usernames}' available.")
+            available_usernames.append(usernames)
            elif json_endpoint["taken"] is True:
-              print(f"{Lb}[!]{Fore.RED} '{username}' taken.")
+              print(f"{Lb}[!]{Fore.RED} '{usernames}' taken.")
        else:
            print(f"{Lb}[!]{Fore.RED} Error validating '{usernames}': {endpoint.json()['message']}")
            exit()
