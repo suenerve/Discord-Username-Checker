@@ -142,6 +142,7 @@ def validate_names(opt,usernames):
        if json_endpoint.get("taken") is not None:
            if json_endpoint["taken"] is False:
             print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{username}' available.")
+            save(username)
             available_usernames.append(username)
            elif json_endpoint["taken"] is True:
               print(f"{Lb}[!]{Fore.RED} '{username}' taken.")
@@ -161,6 +162,7 @@ def validate_names(opt,usernames):
        if json_endpoint.get("taken") is not None:
            if json_endpoint["taken"] is False:
             print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{usernames}' available.")
+            save(usernames)
             available_usernames.append(usernames)
            elif json_endpoint["taken"] is True:
               print(f"{Lb}[!]{Fore.RED} '{usernames}' taken.")
@@ -186,7 +188,6 @@ def opt2load():
       usernames = [line.strip() for line in file]
       validate_names(2,usernames)
      checkavail()
-     save()
      print(f"\n{Lb}[!]{Fore.LIGHTGREEN_EX} Done. {Ly}{len(available_usernames)}{Fore.LIGHTGREEN_EX} Available usernames, are saved in the following file: '{av_list}' .")
      exit()
     except FileNotFoundError:
@@ -204,16 +205,15 @@ def opt1load():
    except ValueError:
       print(f"{Lb}[!]{Fore.RED}Error: You must enter a valid integer. No strings.")
       opt1load()
-def save():
-   with open(av_list, "w") as file:
-        file.write("\n".join(available_usernames))
+def save(content:string):
+   with open(av_list, "a") as file:
+        file.write(f"\n{content}")
 def opt1func(v1,v2):
    for i in range(v1):
     name = get_names(int(v2))
     validate_names(1,name)
     time.sleep(Delay)
    checkavail()
-   save()
    print(f"\n{Lb}[!]{Fore.LIGHTGREEN_EX} Done. {Ly}{len(available_usernames)}{Fore.LIGHTGREEN_EX} Available usernames, are saved in the following file: '{av_list}' .")
    exit()
 
