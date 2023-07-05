@@ -141,13 +141,13 @@ def validate_names(opt,usernames):
            time.sleep(sleep_time)
        if json_endpoint.get("taken") is not None:
            if json_endpoint["taken"] is False:
-            print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{username}' available.")
+            print(f"{Lb}[+]{Fore.LIGHTGREEN_EX} '{username}' available.")
             save(username)
             available_usernames.append(username)
            elif json_endpoint["taken"] is True:
-              print(f"{Lb}[!]{Fore.RED} '{username}' taken.")
+              print(f"{Lb}[-]{Fore.RED} '{username}' taken.")
        else:
-           print(f"{Lb}[!]{Fore.RED} Error validating '{username}': {endpoint.json()['message']}")
+           print(f"{Lb}[?]{Fore.RED} Error validating '{username}': {endpoint.json()['message']}")
            exit()
    elif opt == 1:
        body = {
@@ -161,13 +161,13 @@ def validate_names(opt,usernames):
            time.sleep(sleep_time)
        if json_endpoint.get("taken") is not None:
            if json_endpoint["taken"] is False:
-            print(f"{Lb}[!]{Fore.LIGHTGREEN_EX} '{usernames}' available.")
+            print(f"{Lb}[+]{Fore.LIGHTGREEN_EX} '{usernames}' available.")
             save(usernames)
             available_usernames.append(usernames)
            elif json_endpoint["taken"] is True:
-              print(f"{Lb}[!]{Fore.RED} '{usernames}' taken.")
+              print(f"{Lb}[-]{Fore.RED} '{usernames}' taken.")
        else:
-           print(f"{Lb}[!]{Fore.RED} Error validating '{usernames}': {endpoint.json()['message']}")
+           print(f"{Lb}[?]{Fore.RED} Error validating '{usernames}': {endpoint.json()['message']}")
            exit()
 def exit():
    input(f"{Fore.YELLOW}Press Enter to exit.")
