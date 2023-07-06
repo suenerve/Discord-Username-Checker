@@ -1,6 +1,5 @@
 # DSV
 Discord Username's availability checker.
-#### Note: It will only work with accounts that didn't proceed to apply the name change and has the pop up to update(Eg: Create an alt.). Read <a href =#notes >Notes</a> to know why.
 #### For contribution and updates: <a href="https://discord.gg/Bww4DvKA4Z">Join the Discord</a>
 ---
 - Checks for a specific list of usernames.
@@ -19,6 +18,7 @@ Discord Username's availability checker.
 - Run `dsv.py` 
 
 - (For adding a specific list of usernames, create a file named `usernames.txt` in the same running directory as `dsv.py` and list your usernames there, separating them by a new line.)
+- #### Note: It will only work with accounts that didn't proceed to apply the name change and has the pop up to update(Eg: Create an alt.). Read <a href =#notes >Notes</a> to know why.
 
 # Images
 ![](./images/img1.png)
