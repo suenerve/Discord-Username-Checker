@@ -7,7 +7,6 @@ Discord Username's availability checker.
 - Completely customizable.
  > Check <a href =#notes >notes</a> for a very important information before using this tool, and for some FAQ. And BEFORE opening an issue.
 
----
 # How to use
 - Have <a href="https://www.python.org/">Python</a> installed.
 - First clone the repository or <a href="https://github.com/suegdu/DSV/archive/refs/heads/main.zip">download it as .zip</a>
