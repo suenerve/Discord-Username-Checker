@@ -4,7 +4,10 @@ Discord Username's availability checker.
 ---
 - Checks for a specific list of usernames.
 - Generates and checks for a specific given amount of usernames with a specific username length, (e.g 4 letters usernames.)
+- Supports Multi-Tokens.
 - Completely customizable.
+> - Hmm but what about proxies? Proxies **Does NOT** bypass the rate limit. The only thing could save you is Multi-Tokens.
+
  > Check <a href =#notes >notes</a> for a very important information before using this tool, and for some FAQ. And BEFORE opening an issue.
 
 # How to use
@@ -16,7 +19,9 @@ Discord Username's availability checker.
 - Configure DSV as how you'd like (`config.ini`)
 - Run `dsv.py` 
 
-- (For adding a specific list of usernames, create a file named `usernames.txt` in the same running directory as `dsv.py` and list your usernames there, separating them by a new line.)
+> - For adding a specific list of usernames, create a file named `usernames.txt` in the same running directory as `dsv.py` and list your usernames there, separating them by a new line.
+> - For adding multiple tokens, open `config.ini` and enable `MULTI-TOKEN` by making it `true` and paste your tokens inside `tokens.txt` separating them by a new line.
+
 - #### Note: It will only work with accounts that didn't proceed to apply the name change and has the pop up to update(Eg: Create an alt.). Read <a href =#notes >Notes</a> to know why.
 
 # Images
