@@ -36,7 +36,7 @@ Discord Username's availability checker.
 > ### Due to recent changes in Discord's API, Discord added CAPTCHA requirements. It will only work with an account that didn't proceed to apply the name change and has the pop up to update.
 
 - I **demand** my credits to the code wherever it's used.
-- Spamming Discord's API is against TOS, You may get your account suspended and I am not responsible. For a further caution, use an alt's token and a longer delay.
+- Spamming Discord's API is against TOS, You may get your account suspended/rate limited and I am not responsible. For a further caution, use an alt's token and a longer delay.
 - You need to get your Discord's account's authorization token and paste it inside the variable: `TOKEN` . On how to do that check these following steps: https://www.androidauthority.com/get-discord-token-3149920/
 <!-- (old)- Your account must receive the <a href="https://discord.com/blog/usernames">name change update</a> to use this tool or else you may face some bugs or an invalid continuation of an `Available` username.-->
 
