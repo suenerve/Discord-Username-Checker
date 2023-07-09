@@ -195,7 +195,7 @@ def validate_names(opt,usernames):
        }
        endpoint = requests.post(URL, headers=vali_(), json=body)
        json_endpoint = endpoint.json()
-       if endpoint.status_code == 429 and len(avail_tokens(tokens_list)) != integ_0:
+       if endpoint.status_code == 429 and len(avail_tokens(tokens_list)) != integ_0 and sat_multi_token == True:
            integ_0 = (integ_0 +1) % len(avail_tokens(tokens_list))
            print(f"{Lb}[!]{Ly} Token {integ_0} went rate limited. Using token index: {integ_0} connected as: {requests.get(sys_url,headers=vali_()).json()['username']}#{requests.get(sys_url,headers=vali_()).json()['discriminator']}")
        elif endpoint.status_code == 429 and sat_multi_token == False:
