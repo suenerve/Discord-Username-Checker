@@ -30,7 +30,7 @@ def s_sys_h():
     "Content-Type": "Application/json",
     "Orgin": "https://discord.com/",
 
-    "Authorization":avail_tokens(tokens_list)[0]
+    "Authorization":avail_tokens(tokens_list)[integ_0]
     }
    elif configur.getboolean("sys","MULTI_TOKEN") == False:
       return{
@@ -59,12 +59,21 @@ def sys_c_t():
        print(f"{Lb}[!]{Fore.RED} Invalid config detected. Please re-check the config file, `config.ini` and your settings.")
        exit()
 available_usernames = []
-def vali_():
-   return {
-    "Content-Type": "Application/json",
-    "Orgin": "https://discord.com/",
-    "Authorization":avail_tokens(tokens_list)[integ_0]
-    }
+#def vali_():
+#   if sat_multi_token == True:
+#    return {
+#    "Content-Type": "Application/json",
+#    "Orgin": "https://discord.com/",
+#    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
+#    "Authorization":avail_tokens(tokens_list)[integ_0]
+#    }
+#   else:
+#      return {
+#    "Content-Type": "Application/json",
+#    "Orgin": "https://discord.com/",
+#    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
+#    "Authorization":
+#    }
 av_list = os.path.join(dir_path, f"available_usernames.txt")
 sample_0 = r"_."
 Lb = Fore.LIGHTBLACK_EX
@@ -171,11 +180,11 @@ def validate_names(opt,usernames):
            "username": username
        }
        time.sleep(Delay)
-       endpoint = requests.post(URL, headers=vali_(), json=body)
+       endpoint = requests.post(URL, headers=s_sys_h(), json=body)
        json_endpoint = endpoint.json()
        if endpoint.status_code == 429 and sat_multi_token == True and len(avail_tokens(tokens_list)) != integ_0:
            integ_0 = (integ_0 +1) % len(avail_tokens(tokens_list))
-           print(f"{Lb}[!]{Ly} Token {integ_0} went rate limited. Using token index: {integ_0} connected as: {requests.get(sys_url,headers=vali_()).json()['username']}#{requests.get(sys_url,headers=vali_()).json()['discriminator']}")
+           print(f"{Lb}[!]{Ly} Token {integ_0} went rate limited. Using token index: {integ_0} connected as: {requests.get(sys_url,headers=s_sys_h()).json()['username']}#{requests.get(sys_url,headers=s_sys_h()).json()['discriminator']}")
        elif endpoint.status_code == 429 and sat_multi_token == False:
          sleep_time = endpoint.json()["retry_after"]
          print(f"{Lb}[!]{Fore.RED} Rate limit hit. Sleeping for {sleep_time}s (Discord rate limit)")
@@ -193,11 +202,11 @@ def validate_names(opt,usernames):
        body = {
            "username": usernames
        }
-       endpoint = requests.post(URL, headers=vali_(), json=body)
+       endpoint = requests.post(URL, headers=s_sys_h(), json=body)
        json_endpoint = endpoint.json()
        if endpoint.status_code == 429 and len(avail_tokens(tokens_list)) != integ_0 and sat_multi_token == True:
            integ_0 = (integ_0 +1) % len(avail_tokens(tokens_list))
-           print(f"{Lb}[!]{Ly} Token {integ_0} went rate limited. Using token index: {integ_0} connected as: {requests.get(sys_url,headers=vali_()).json()['username']}#{requests.get(sys_url,headers=vali_()).json()['discriminator']}")
+           print(f"{Lb}[!]{Ly} Token {integ_0} went rate limited. Using token index: {integ_0} connected as: {requests.get(sys_url,headers=s_sys_h()).json()['username']}#{requests.get(sys_url,headers=s_sys_h()).json()['discriminator']}")
        elif endpoint.status_code == 429 and sat_multi_token == False:
          sleep_time = endpoint.json()["retry_after"]
          print(f"{Lb}[!]{Fore.RED} Rate limit hit. Sleeping for {sleep_time}s (Discord rate limit)")
