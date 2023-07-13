@@ -1,5 +1,6 @@
 # Author: suegdu
 # I demand my credits to the code wherever it's used.
+# This code is licensed under a NON-commercial use.
 # Open issues at: https://github.com/suegdu/DSV/issues/new
 # NOTE : Spamming Discord's API is against TOS, You may get your account suspended and I am not responsible. For a further caution, use an alt's token and a higher delay.
 
@@ -138,6 +139,9 @@ def main():
                                                   {Fore.LIGHTCYAN_EX}Multi-Token: {Fore.YELLOW}{sat_multi_token}{Ly}
                                                   {Fore.LIGHTCYAN_EX}Delay: {Fore.YELLOW}{Delay}{Ly}
                                                          
+                                                Support this tool: 
+                                                   {Fore.LIGHTCYAN_EX}paypal.com/paypalme/suegdu{Ly}
+
   Discord Username's availability validator.
 ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 """)
