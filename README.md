@@ -5,6 +5,7 @@ Discord Username's availability checker.
 - Checks for a specific list of usernames.
 - Generates and checks for a specific given amount of usernames with a specific username length, (e.g 4 letters usernames.)
 - Supports Multi-Tokens.
+- Supports Webhooks.
 - Completely customizable.
 > - Hmm but what about proxies? Proxies **Does NOT** bypass the rate limit. Will add it soon though
 
