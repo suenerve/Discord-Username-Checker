@@ -1,6 +1,9 @@
 # DSV
 Discord Username's availability checker.
-#### For contribution and updates: <a href="https://discord.gg/Bww4DvKA4Z">Join the Discord</a>
+
+**For contribution and updates: <a href="https://discord.gg/Bww4DvKA4Z">Join the Discord</a>**<br>
+**Support me: <a href="https://www.paypal.com/paypalme/suegdu">Paypal</a>**
+
 ---
 - Checks for a specific list of usernames.
 - Generates and checks for a specific given amount of usernames with a specific username length, (e.g 4 letters usernames.)
@@ -43,4 +46,4 @@ Discord Username's availability checker.
 - Make sure to have a decent delay or you may get your account disabled. 
 
 
-**Support**: <a href="https://www.paypal.com/paypalme/suegdu">Paypal</a>
+
