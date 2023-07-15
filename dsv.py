@@ -12,7 +12,9 @@ import string
 import requests
 import os
 import time
+import json
 from colorama import Fore,init
+import datetime
 from configparser import ConfigParser
 import sys
 init(autoreset=True)
@@ -60,39 +62,31 @@ def sys_c_t():
        print(f"{Lb}[!]{Fore.RED} Invalid config detected. Please re-check the config file, `config.ini` and your settings.")
        exit()
 available_usernames = []
-#def vali_():
-#   if sat_multi_token == True:
-#    return {
-#    "Content-Type": "Application/json",
-#    "Orgin": "https://discord.com/",
-#    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
-#    "Authorization":avail_tokens(tokens_list)[integ_0]
-#    }
-#   else:
-#      return {
-#    "Content-Type": "Application/json",
-#    "Orgin": "https://discord.com/",
-#    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
-#    "Authorization":
-#    }
 av_list = os.path.join(dir_path, f"available_usernames.txt")
 sample_0 = r"_."
 Lb = Fore.LIGHTBLACK_EX
 Ly = Fore.LIGHTYELLOW_EX
-Delay = configur.getfloat("other","default_delay")
+Delay = configur.getfloat("config","default_delay")
 def setconf():
    global string_0
    global digits_0
    global punctuation_0
+   global webhook_0
    #global multi_token_0
    global sat_string
    global sat_digits
    global sat_multi_token
    global sat_punct
+   global sat_webhook
+   sat_webhook = configur.get("sys","WEBHOOK_URL")
    sat_string = configur.getboolean("config","string")
    sat_digits = configur.getboolean("config","digits")
    sat_punct = configur.getboolean("config","punctuation")
    sat_multi_token = configur.getboolean("sys","MULTI_TOKEN")
+   if sat_webhook =="":
+      webhook_0 = False
+   elif sat_webhook !="":
+      webhook_0 = True
    if sat_string == True:
       string_0 = string.ascii_lowercase
    elif sat_string == False:
@@ -137,6 +131,7 @@ def main():
   ╚═════╝ ╚══════╝  ╚═══╝                         {Fore.LIGHTCYAN_EX}String: {Fore.YELLOW}{sat_string}{Ly}
                                                   {Fore.LIGHTCYAN_EX}Punctuation: {Fore.YELLOW}{sat_punct}{Ly}
                                                   {Fore.LIGHTCYAN_EX}Multi-Token: {Fore.YELLOW}{sat_multi_token}{Ly}
+                                                  {Fore.LIGHTCYAN_EX}Webhook: {Fore.YELLOW}{webhook_0}{Ly}
                                                   {Fore.LIGHTCYAN_EX}Delay: {Fore.YELLOW}{Delay}{Ly}
                                                          
                                                 Support this tool: 
@@ -196,6 +191,7 @@ def validate_names(opt,usernames):
        if json_endpoint.get("taken") is not None:
            if json_endpoint["taken"] is False:
             print(f"{Lb}[+]{Fore.LIGHTGREEN_EX} '{username}' available.")
+            ch_send_webhook(username)
             save(username)
             available_usernames.append(username)
            elif json_endpoint["taken"] is True:
@@ -218,6 +214,7 @@ def validate_names(opt,usernames):
        if json_endpoint.get("taken") is not None:
            if json_endpoint["taken"] is False:
             print(f"{Lb}[+]{Fore.LIGHTGREEN_EX} '{usernames}' available.")
+            ch_send_webhook(usernames)
             save(usernames)
             available_usernames.append(usernames)
            elif json_endpoint["taken"] is True:
@@ -267,6 +264,38 @@ def opt1load():
 def save(content:string):
    with open(av_list, "a") as file:
         file.write(f"\n{content}")
+def ch_send_webhook(val0:str):
+   if webhook_0 == True:
+    webhook = Discord(url=sat_webhook)
+    try:
+     webhook.post(
+       username="DSV",
+       avatar_url="https://cdn.icon-icons.com/icons2/488/PNG/512/search_47686.png",
+       embeds=[
+    {
+      "title": f"Username: `{val0}` is available :white_check_mark:.",
+      "timestamp": str(datetime.datetime.utcnow()),
+      "footer": {
+        "text": "github.com/suegdu/Discord-Username-Checker"
+      },
+      "author": {
+        "name": "DSV - Username Found",
+        "url": "https://github.com/suegdu/Discord-Username-Checker",
+        "icon_url": "https://cdn-icons-png.flaticon.com/512/5290/5290982.png"
+      },
+      "thumbnail": {
+        "url": "https://raw.githubusercontent.com/suegdu/Discord-Username-Checker/main/images/ignore.png"
+      },
+      "fields": [],
+      "color": 16768000
+    }
+  ],
+
+    )
+    except Exception as s:
+       print(f"{Lb}[!]{Fore.RED}Error: Something went wrong while sending the webhook request. Exception: {s} | DSV: Make sure you have a valid webhook URL")
+   else:
+      return
 def opt1func(v1,v2):
    for i in range(v1):
     name = get_names(int(v2))
@@ -277,6 +306,42 @@ def opt1func(v1,v2):
    exit()
 def get_names(length: int) ->str:
    return ''.join(random.sample(string_0 + digits_0 + punctuation_0, length))
-    
+# Source of this class: https://github.com/10mohi6/discord-webhook-python/blob/master/discordwebhook/discordwebhook.py
+class Discord:
+    def __init__(self, *, url):
+        self.url = url
+    def post(
+        self,
+        *,
+        content=None,
+        username=None,
+        avatar_url=None,
+        tts=False,
+        file=None,
+        embeds=None,
+        allowed_mentions=None
+    ):
+        if content is None and file is None and embeds is None:
+            raise ValueError("required one of content, file, embeds")
+        data = {}
+        if content is not None:
+            data["content"] = content
+        if username is not None:
+            data["username"] = username
+        if avatar_url is not None:
+            data["avatar_url"] = avatar_url
+        data["tts"] = tts
+        if embeds is not None:
+            data["embeds"] = embeds
+        if allowed_mentions is not None:
+            data["allowed_mentions"] = allowed_mentions
+        if file is not None:
+            return requests.post(
+                self.url, {"payload_json": json.dumps(data)}, files=file
+            )
+        else:
+            return requests.post(
+                self.url, json.dumps(data), headers={"Content-Type": "application/json"}
+            )
 if __name__ == "__main__":
     main()
