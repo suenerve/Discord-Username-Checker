@@ -26,9 +26,9 @@ Discord Username's availability checker.
 - #### Note: It will only work with accounts that didn't proceed to apply the name change and has the pop up to update(Eg: Create an alt.). Read <a href =#notes >Notes</a> to know why.
 
 # Images
-![](./images/img1.png)
-![](./images/img2.png)
-![](./images/img3.png)
+![](./images/img11.png)
+![](./images/img22.png)
+![](./images/img33.png)
 
 # Notes
 #### Disclaimer: I'm not responsible for/of any damage/results/returns/suspension made/resulted with/by this tool. It is your will to run, and once ran, it's your responsibility.
