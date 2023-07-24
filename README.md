@@ -15,7 +15,7 @@ Discord Username's availability checker. [![Support][support-badge]][support-lin
 - Supports Multi-Tokens.
 - Supports Webhooks.
 - Completely customizable.
-> - What about proxies, snipe, etc? **<a href="https://discord.gg/Bww4DvKA4Z">Join the Discord</a>** server for more information about that.
+- What about proxies, snipe, etc? **<a href="https://discord.gg/Bww4DvKA4Z">Join the Discord</a>** server for more information about that.
 
  > Check <a href =#notes >notes</a> for a very important information before using this tool, and for some FAQ. And BEFORE opening an issue.
 
