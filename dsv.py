@@ -135,7 +135,7 @@ def main():
                                                   {Fore.LIGHTCYAN_EX}Delay: {Fore.YELLOW}{Delay}{Ly}
                                                          
                                                 Support this tool: 
-                                                   {Fore.LIGHTCYAN_EX}paypal.com/paypalme/suegdu{Ly}
+                                                   {Fore.LIGHTCYAN_EX}paypal.me/suegdu{Ly}
 
   Discord Username's availability validator.
 ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
