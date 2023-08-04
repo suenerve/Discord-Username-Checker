@@ -1,6 +1,8 @@
 # DSV
 Discord Username's availability checker. [![Support][support-badge]][support-link] [![PayPal][paypal-badge]][paypal-link]
 
+(This is the only and only official repo. Do **NOT** download it from any other repo that claims to have it from me but edited.)
+
 [paypal-badge]: https://img.shields.io/badge/PayPal-%23003087.svg?style=flat&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAgCAYAAAABtRhCAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAdhwAAHYcBj+XxZQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIZSURBVEiJvZa7a1RREIe/CRsIqBBQJEEUO5+YRgSx0JTBwkKwsBMU/4HY2dmKFmm1tRBREEGFYGMhvgolPlBsRBuJj5iIiRvzWWxuOF7v3r2Ld/ODhXNmhvnOzHnshZzU82rTamqqn9XX6jV1XB3K52wrtaHOV4S104J6Ue2vAtz2n7BUt9S+PCNv2FG5HZ11GDi1mkCA052AO2sG7s63tdcV9gON1BDZQA1gFlhTI3AmIgZTQ1rhlpphAFN5Qwqse/8A7uYNaX/r3j+Am9lAHQbmegmcjIhnyfwosLFXwEXgbM52BBhemdl6hOvSeEpSR9QldTYzDNUE+q2eyZer3lj2rwBHa4A9UA8UwE4kMS+yPexm/xZpPRDTwBvgCXA9Ip4XwEaBicT0MHNMlKz8ijrQxYKynMfVn7lcxzLnZAnwYJegEfV2QZ6P6kDW0rJX5lUHwAZgD7CP1l3b2yb0XETMow6WVDedS35Bfbf8+2LrqFfRVVt/DqDuLwm8nwM+qghIdcnk+6aP8hO60s7lFW4va2+iReAOcCgiTkZEM3M0OgBfJuNNwLqCmHvAY+AbMAO8BZ5GxNeihA2qH5iiuO/AWET8Ksnxl/o6ANMKizox1Q0sA65t45sDPiTzov0rvTJFagC7gM0FvoWIMJkXVdg1sLLUTwVHfqxXsPVt7tjWbnP98+3fRkXt/AG8Xy3gEnA5Ipa6Bf4BbzmPtw84RMAAAAAASUVORK5CYII=
 
 [paypal-link]: https://paypal.me/suegdu
@@ -42,7 +44,7 @@ Discord Username's availability checker. [![Support][support-badge]][support-lin
 #### Disclaimer: I'm not responsible for/of any damage/results/returns/suspension made/resulted with/by this tool. It is your will to run, and once ran, it's your responsibility.
 
 
-> ### Due to recent changes in Discord's API, Discord added CAPTCHA requirements. It will only work with an account that didn't proceed to apply the name change and has the pop up to update.
+
 > - This repository is licensed under a **NON-COMMERCIAL USE.** <a href="https://github.com/suegdu/Discord-Username-Checker/blob/main/LICENSE">READ here.</a>
 
 - I **demand** my credits to the code wherever it's used.
