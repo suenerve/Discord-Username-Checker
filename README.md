@@ -17,7 +17,7 @@ Discord Username's availability checker. [![Support][support-badge]][support-lin
 - Supports Multi-Tokens.
 - Supports Webhooks.
 - Completely customizable.
-- What about Proxies, Sniper, **No-Token Mode**? **<a href="https://discord.gg/Bww4DvKA4Z">Join the Discord</a>** to buy the paid version, really cheap.
+- What about Proxies, Sniper, Catch unclaimed/banned, **No-Token Mode**? **<a href="https://discord.gg/Bww4DvKA4Z">Join the Discord</a>** to buy the paid version, really cheap.
 
  > Check <a href =#notes >notes</a> for a very important information before using this tool, and for some FAQ. And BEFORE opening an issue.
 
