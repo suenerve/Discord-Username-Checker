@@ -7,6 +7,7 @@
 
 
 
+
 import random
 import string 
 import requests
@@ -230,7 +231,7 @@ def exit():
    sys.exit(0)
 def checkavail(): 
    if len(available_usernames) < 1:
-      print(f"{Lb}[!]{Fore.RED}Error: No available usernames found.")
+      print(f"{Lb}[!]{Fore.RED} Error: No available usernames found.")
       exit()
    else:
       return
@@ -247,19 +248,19 @@ def opt2load():
      print(f"\n{Lb}[=]{Fore.LIGHTGREEN_EX} Done. {Ly}{len(available_usernames)}{Fore.LIGHTGREEN_EX} Available usernames, are saved in the following file: '{av_list}' .")
      exit()
     except FileNotFoundError:
-       print(f"{Lb}[!]{Fore.RED}Error: Couldn't find the list (usernames.txt). Please make sure to create a valid list file in the same directory: \n({dir_path}\\)")
+       print(f"{Lb}[!]{Fore.RED} Error: Couldn't find the list (usernames.txt). Please make sure to create a valid list file in the same directory: \n({dir_path}\\)")
        exit()
 def opt1load():
    opt1_input:int = input(f"{Lb}[{Ly}How many letters in a username{Lb}]:> ")
    try:
     int(opt1_input)
     if int(opt1_input) >32 or int(opt1_input) <2:
-       print(f"{Lb}[!]{Fore.RED}Error: The username must contain at least 2 letters, and not more than 32 letters.")
+       print(f"{Lb}[!]{Fore.RED} Error: The username must contain at least 2 letters, and not more than 32 letters.")
        opt1load()
     opt2_input:int = input(f"{Lb}[{Ly}How many usernames to generate{Lb}]:> ")
     opt1func(int(opt2_input),int(opt1_input))
    except ValueError:
-      print(f"{Lb}[!]{Fore.RED}Error: You must enter a valid integer. No strings.")
+      print(f"{Lb}[!]{Fore.RED} Error: You must enter a valid integer. No strings.")
       opt1load()
 def save(content:string):
    with open(av_list, "a") as file:
@@ -293,7 +294,7 @@ def ch_send_webhook(val0:str):
 
     )
     except Exception as s:
-       print(f"{Lb}[!]{Fore.RED}Error: Something went wrong while sending the webhook request. Exception: {s} | DSV: Make sure you have a valid webhook URL")
+       print(f"{Lb}[!]{Fore.RED} Error: Something went wrong while sending the webhook request. Exception: {s} | DSV: Make sure you have a valid webhook URL")
    else:
       return
 def opt1func(v1,v2):
