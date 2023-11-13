@@ -1,7 +1,7 @@
-# Author: suegdu
+# Author: suenerve
 # I demand my credits to the code wherever it's used.
 # This code is licensed under a NON-commercial use.
-# Open issues at: https://github.com/suegdu/DSV/issues/new
+# Open issues at: https://github.com/suenerve/DSV/issues/new
 # NOTE : Spamming Discord's API is against TOS, You may get your account suspended and I am not responsible. For a further caution, use an alt's token and a higher delay.
 
 
@@ -19,8 +19,8 @@ import datetime
 from configparser import ConfigParser
 import sys
 init(autoreset=True)
-__version__ = "Author: suegdu DSV 1.9"
-__github__= "https://github.com/suegdu"
+__version__ = "Author: suenerve DSV 1.9"
+__github__= "https://github.com/suenerve"
 dir_path = os.path.dirname(os.path.realpath(__file__))
 configur = ConfigParser()
 configur.read(os.path.join(dir_path, f"config.ini"))
@@ -135,8 +135,6 @@ def main():
                                                   {Fore.LIGHTCYAN_EX}Webhook: {Fore.YELLOW}{webhook_0}{Ly}
                                                   {Fore.LIGHTCYAN_EX}Delay: {Fore.YELLOW}{Delay}{Ly}
                                                          
-                                                Support this tool: 
-                                                   {Fore.LIGHTCYAN_EX}paypal.me/suegdu{Ly}
 
   Discord Username's availability validator.
 ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
@@ -277,15 +275,15 @@ def ch_send_webhook(val0:str):
       "title": f"Username: `{val0}` is available :white_check_mark:.",
       "timestamp": str(datetime.datetime.utcnow()),
       "footer": {
-        "text": "github.com/suegdu/Discord-Username-Checker"
+        "text": "github.com/suenerve/Discord-Username-Checker"
       },
       "author": {
         "name": "DSV - Username Found",
-        "url": "https://github.com/suegdu/Discord-Username-Checker",
+        "url": "https://github.com/suenerve/Discord-Username-Checker",
         "icon_url": "https://cdn-icons-png.flaticon.com/512/5290/5290982.png"
       },
       "thumbnail": {
-        "url": "https://raw.githubusercontent.com/suegdu/Discord-Username-Checker/main/images/ignore.png"
+        "url": "https://raw.githubusercontent.com/suenerve/Discord-Username-Checker/main/images/ignore.png"
       },
       "fields": [],
       "color": 16768000
