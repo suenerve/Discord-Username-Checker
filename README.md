@@ -10,7 +10,7 @@ Discord Username's availability checker.
 - Supports Multi-Tokens.
 - Supports Webhooks.
 - Completely customizable.
-- 
+  
  > Check <a href =#notes >notes</a> for a very important information before using this tool, and for some FAQ. And BEFORE opening an issue.
 
 # How to use
@@ -25,7 +25,6 @@ Discord Username's availability checker.
 > - For adding a specific list of usernames, create a file named `usernames.txt` in the same running directory as `dsv.py` and list your usernames there, separating them by a new line.
 > - For adding multiple tokens, open `config.ini` and enable `MULTI-TOKEN` by making it `true` and paste your tokens inside `tokens.txt` separating them by a new line.
 
-- #### Note: It will only work with accounts that didn't proceed to apply the name change and has the pop up to update(Eg: Create an alt.). Read <a href =#notes >Notes</a> to know why.
 
 # Images
 ![](./images/1.png)
@@ -39,7 +38,7 @@ Discord Username's availability checker.
 > - This repository is licensed under a **NON-COMMERCIAL USE.** <a href="https://github.com/suenerve/Discord-Username-Checker/blob/main/LICENSE">READ here.</a>
 
 - I **demand** my credits to the code wherever it's used.
-- Spamming Discord's API is against TOS, You may get your account suspended/rate limited and I am not responsible. For a further caution, use an alt's token and a longer delay.
+- Spamming Discord's API is against TOS, You may get your account suspended/rate limited and I am not responsible.
 - You need to get your Discord's account's authorization token and paste it inside the variable: `TOKEN` . On how to do that check these following steps: https://www.androidauthority.com/get-discord-token-3149920/
 - Make sure to have a decent delay or you may get your account disabled. 
 
